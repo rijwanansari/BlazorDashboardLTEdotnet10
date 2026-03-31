@@ -1,7 +1,50 @@
 ﻿@page "/"
+@inject IDashboardMetricsService MetricsService
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Dashboard</PageTitle>
 
-<h1>Hello, world!</h1>
+<section class="dashboard-grid">
+	<header>
+		<h1>Executive Dashboard</h1>
+		<p>Real-time insight snapshot for your core platform KPIs.</p>
+	</header>
 
-Welcome to your new app.
+	<div class="kpi-grid">
+		@foreach (var metric in _metrics)
+		{
+			<MetricCard
+				Title="@metric.Name"
+				Value="@metric.Value"
+				IconCss="@metric.IconCss"
+				TrendCss="@metric.TrendCss"
+				DeltaLabel="@metric.DeltaLabel" />
+		}
+	</div>
+
+	<section class="panel">
+		<h2>Recent Activity</h2>
+		<ul class="activity-list">
+			@foreach (var item in _recentActivity)
+			{
+				<li class="activity-item">
+					<div style="display:flex; justify-content:space-between; gap:1rem;">
+						<strong>@item.Title</strong>
+						<span class="@item.BadgeCss">@item.OccurredAtUtc.ToLocalTime().ToString("MMM dd, HH:mm")</span>
+					</div>
+					<p>@item.Description</p>
+				</li>
+			}
+		</ul>
+	</section>
+</section>
+
+@code {
+	private IReadOnlyList<DashboardMetric> _metrics = [];
+	private IReadOnlyList<ActivityFeedItem> _recentActivity = [];
+
+	protected override async Task OnInitializedAsync()
+	{
+		_metrics = await MetricsService.GetOverviewAsync();
+		_recentActivity = await MetricsService.GetRecentActivityAsync();
+	}
+}

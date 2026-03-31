@@ -1,0 +1,16 @@
+@using BlazorDashboardLTE.Theme.Models
+
+<nav class="sidebar-nav" aria-label="Main navigation">
+    @foreach (var item in Items)
+    {
+        <NavLink href="@item.Href" class="sidebar-link" Match="@(item.Href == "/" ? NavLinkMatch.All : NavLinkMatch.Prefix)">
+            <i class="@item.IconCss"></i>
+            <span>@item.Text</span>
+        </NavLink>
+    }
+</nav>
+
+@code {
+    [Parameter, EditorRequired]
+    public IEnumerable<DashboardNavItem> Items { get; set; } = [];
+}

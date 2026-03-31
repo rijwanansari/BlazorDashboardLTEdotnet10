@@ -1,0 +1,41 @@
+@inherits LayoutComponentBase
+@inject Microsoft.Extensions.Options.IOptions<BlazorDashboardLTE.Theme.Options.DashboardThemeOptions> ThemeOptions
+
+<div class="app-shell" id="appShell">
+    <aside class="app-sidebar">
+        <div class="brand-zone">
+            <span class="brand-logo">BL</span>
+            <div>
+                <p class="brand-title">@ThemeOptions.Value.AppName</p>
+                <small class="brand-subtitle">Production Console</small>
+            </div>
+        </div>
+
+        <SidebarNav Items="ThemeOptions.Value.NavigationItems" />
+    </aside>
+
+    <div class="app-main">
+        <header class="topbar">
+            <button type="button" class="sidebar-toggle" aria-label="Toggle navigation" onclick="dashboardTheme.toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <span>Operations Overview</span>
+            </div>
+            <div class="topbar-user">
+                <span class="status-dot"></span>
+                @ThemeOptions.Value.UserDisplayName
+            </div>
+        </header>
+
+        <main class="content-surface">
+            @Body
+        </main>
+    </div>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">x</span>
+</div>

@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BlazorDashboardLTE.Application/BlazorDashboardLTE.Application.csproj" />
+    <Project Path="src/BlazorDashboardLTE.Host/BlazorDashboardLTE.Host.csproj" />
+    <Project Path="src/BlazorDashboardLTE.Infrastructure/BlazorDashboardLTE.Infrastructure.csproj" />
+    <Project Path="src/BlazorDashboardLTE.Theme/BlazorDashboardLTE.Theme.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BlazorDashboardLTE.Application.Tests/BlazorDashboardLTE.Application.Tests.csproj" />
+  </Folder>
+</Solution>

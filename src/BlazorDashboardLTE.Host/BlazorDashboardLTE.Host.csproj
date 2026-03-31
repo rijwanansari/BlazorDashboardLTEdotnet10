@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorDashboardLTE.Application\BlazorDashboardLTE.Application.csproj" />
+    <ProjectReference Include="..\BlazorDashboardLTE.Infrastructure\BlazorDashboardLTE.Infrastructure.csproj" />
+    <ProjectReference Include="..\BlazorDashboardLTE.Theme\BlazorDashboardLTE.Theme.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+</Project>
